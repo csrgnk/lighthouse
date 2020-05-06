@@ -10,9 +10,9 @@ const i18n = require('../lib/i18n/i18n.js');
 
 const UIStrings = {
   /** Descriptive title of a diagnostic audit that provides up to the top five elements contributing to Cumulative Layout Shift. */
-  title: 'Top Culumlative Layout Shift Elements',
+  title: 'Avoid large layout shifts',
   /** Description of a diagnostic audit that provides up to the top five elements contributing to Cumulative Layout Shift. */
-  description: 'These are the elements that contribute most to the CLS of the site.',
+  description: 'These DOM elements contribute most to the CLS of the page.',
   /** [ICU Syntax] Label for the Cumulative Layout Shift Elements audit identifying how many elements were found. */
   displayValue: `{nodeCount, plural,
     =0 {No elements found}

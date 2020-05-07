@@ -23,13 +23,13 @@ const UIStrings = {
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
 
-class CumulativeLayoutShiftElements extends Audit {
+class LayoutShiftElements extends Audit {
   /**
    * @return {LH.Audit.Meta}
    */
   static get meta() {
     return {
-      id: 'cumulative-layout-shift-elements',
+      id: 'layout-shift-elements',
       title: str_(UIStrings.title),
       description: str_(UIStrings.description),
       scoreDisplayMode: Audit.SCORING_MODES.INFORMATIVE,
@@ -73,5 +73,5 @@ class CumulativeLayoutShiftElements extends Audit {
   }
 }
 
-module.exports = CumulativeLayoutShiftElements;
+module.exports = LayoutShiftElements;
 module.exports.UIStrings = UIStrings;

@@ -14,11 +14,7 @@
 const Gatherer = require('./gatherer.js');
 const pageFunctions = require('../../lib/page-functions.js');
 const TraceProcessor = require('../../lib/tracehouse/trace-processor.js');
-const {
-  addRectTopAndBottom,
-  getRectOverlapArea,
-  getRectArea,
-} = require('../../lib/rect-helpers.js');
+const RectHelpers = require('../../lib/rect-helpers.js');
 
 const LH_ATTRIBUTE_MARKER = 'lhtemp';
 
@@ -73,7 +69,7 @@ class TraceElements extends Gatherer {
       width: rect[2],
       height: rect[3],
     };
-    return addRectTopAndBottom(rectArgs);
+    return RectHelpers.addRectTopAndBottom(rectArgs);
   }
 
   /**
@@ -100,9 +96,9 @@ class TraceElements extends Gatherer {
 
         const oldRect = TraceElements.traceRectToLHRect(node.old_rect);
         const newRect = TraceElements.traceRectToLHRect(node.new_rect);
-        const areaOfImpact = getRectArea(oldRect) +
-          getRectArea(newRect) -
-          getRectOverlapArea(oldRect, newRect);
+        const areaOfImpact = RectHelpers.getRectArea(oldRect) +
+          RectHelpers.getRectArea(newRect) -
+          RectHelpers.getRectOverlapArea(oldRect, newRect);
 
         let prevShiftTotal = 0;
         if (clsPerNodeMap.has(node.node_id)) {
@@ -146,7 +142,7 @@ class TraceElements extends Gatherer {
     const translatedIds = await driver.sendCommand('DOM.pushNodesByBackendIdsToFrontend',
       {backendNodeIds: backendNodeIds});
 
-    // Mark the LCP element so we can find it in the page.
+    // Mark the elements so we can find them in the page.
     for (let i = 0; i < backendNodeIds.length; i++) {
       const metricName =
         lcpNodeId === backendNodeIds[i] ? 'largest-contentful-paint' : 'cumulative-layout-shift';

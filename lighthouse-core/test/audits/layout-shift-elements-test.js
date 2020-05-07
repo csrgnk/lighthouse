@@ -5,12 +5,12 @@
  */
 'use strict';
 
-const CumulativeLayoutShiftElementsAudit =
-  require('../../audits/cumulative-layout-shift-elements.js');
+const LayoutShiftElementsAudit =
+  require('../../audits/layout-shift-elements.js');
 
 /* eslint-env jest */
 
-describe('Performance: cumulative-layout-shift-elements audit', () => {
+describe('Performance: layout-shift-elements audit', () => {
   it('correctly surfaces a single CLS element', async () => {
     const artifacts = {
       TraceElements: [{
@@ -22,7 +22,7 @@ describe('Performance: cumulative-layout-shift-elements audit', () => {
       }],
     };
 
-    const auditResult = await CumulativeLayoutShiftElementsAudit.audit(artifacts);
+    const auditResult = await LayoutShiftElementsAudit.audit(artifacts);
     expect(auditResult.score).toEqual(1);
     expect(auditResult.displayValue).toBeDisplayString('1 element found');
     expect(auditResult.details.items).toHaveLength(1);
@@ -40,7 +40,7 @@ describe('Performance: cumulative-layout-shift-elements audit', () => {
       TraceElements: Array(4).fill(clsElement),
     };
 
-    const auditResult = await CumulativeLayoutShiftElementsAudit.audit(artifacts);
+    const auditResult = await LayoutShiftElementsAudit.audit(artifacts);
     expect(auditResult.score).toEqual(1);
     expect(auditResult.displayValue).toBeDisplayString('4 elements found');
     expect(auditResult.details.items).toHaveLength(4);
@@ -51,7 +51,7 @@ describe('Performance: cumulative-layout-shift-elements audit', () => {
       TraceElements: [],
     };
 
-    const auditResult = await CumulativeLayoutShiftElementsAudit.audit(artifacts);
+    const auditResult = await LayoutShiftElementsAudit.audit(artifacts);
     expect(auditResult.score).toEqual(1);
     expect(auditResult.displayValue).toBeDisplayString('No elements found');
     expect(auditResult.details.items).toHaveLength(0);

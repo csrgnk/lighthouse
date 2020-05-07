@@ -146,6 +146,10 @@ class TraceElements extends Gatherer {
     for (let i = 0; i < backendNodeIds.length; i++) {
       const metricName =
         lcpNodeId === backendNodeIds[i] ? 'largest-contentful-paint' : 'cumulative-layout-shift';
+      const nodeDetails = await driver.sendCommand('DOM.describeNode', {nodeId: translatedIds.nodeIds[i]});
+      console.log('-------------------------');
+      console.log(nodeDetails);
+      console.log('-------------------------');
       await driver.sendCommand('DOM.setAttributeValue', {
         nodeId: translatedIds.nodeIds[i],
         name: LH_ATTRIBUTE_MARKER,

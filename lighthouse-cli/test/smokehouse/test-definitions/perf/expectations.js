@@ -172,10 +172,10 @@ module.exports = [
   },
   {
     lhr: {
-      requestedUrl: 'http://localhost:10200/perf/trace-nodes.html',
-      finalUrl: 'http://localhost:10200/perf/trace-nodes.html',
+      requestedUrl: 'http://localhost:10200/perf/trace-elements.html',
+      finalUrl: 'http://localhost:10200/perf/trace-elements.html',
       audits: {
-        'lcp-node': {
+        'largest-contentful-paint-element': {
           score: null,
           displayValue: '1 element found',
           details: {
@@ -189,7 +189,7 @@ module.exports = [
             ],
           },
         },
-        'cls-nodes': {
+        'layout-shift-elements': {
           score: null,
           displayValue: '1 element found',
           details: {

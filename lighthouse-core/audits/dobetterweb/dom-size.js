@@ -131,4 +131,4 @@ class DOMSize extends Audit {
 }
 
 module.exports = DOMSize;
-module.exports.UIStrings = UIStrings;
+module.exports.UIStrings = UIStrings; 
